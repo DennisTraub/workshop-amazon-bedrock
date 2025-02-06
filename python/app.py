@@ -1,26 +1,23 @@
-import click
+import boto3
 
-from utils.aws import try_initialize_session
+from utils import exit_on_error
+from utils.cli import run_cli
 from utils.input import get_user_input
+from bedrock.bedrock import invoke_model
 
 
-@click.group()
-def app():
-    pass
-
-@app.command()
-@click.option("--region", '-r', default=None, help="The AWS Region")
-def run(region):
-    boto3_session, err = try_initialize_session(region)
-    if err:
-        print(f"Error: {err}")
-        exit(1)
-
+def loop(session: boto3.Session):
     while True:
         user_input = get_user_input()
+
         if user_input == "/x":
             break
-        print("Hi\n")
+
+        response, err = invoke_model(user_input, session)
+        exit_on_error(err)
+
+        print(response)
 
 if __name__ == '__main__':
+    app = run_cli(loop)
     app()
