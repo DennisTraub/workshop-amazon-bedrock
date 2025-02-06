@@ -1,5 +1,7 @@
 import click
 
+from config.scenarios import modules
+
 
 def run_cli(loop, scenarios):
     @click.group()
@@ -15,8 +17,16 @@ def run_cli(loop, scenarios):
     @app.command(name="list")
     def list_scenarios():
         """Lists all scenarios"""
-        for key, scenario in scenarios.items():
-            click.echo(f"Scenario {key}: {scenario["description"]}")
+        current_module = None
+
+        for scenario_id, scenario in scenarios.items():
+            if scenario["module"] != current_module:
+                current_module = scenario["module"]
+                module_id = next(k for k, v in modules.items() if v == current_module)
+                click.echo(f"\nModule {module_id}: {current_module}")
+
+            click.echo(f"Scenario {scenario_id}: {scenario["description"]}")
+
 
     return app
 

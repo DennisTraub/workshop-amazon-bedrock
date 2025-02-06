@@ -2,7 +2,7 @@ import boto3
 import json
 
 # Scenario 1 - Invoke Model
-def invoke_model(user_input: str):
+def invoke_claude(user_input: str):
     try:
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
 
