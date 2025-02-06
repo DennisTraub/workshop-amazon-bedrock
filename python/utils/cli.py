@@ -1,21 +1,22 @@
 import click
 
-from utils.aws import try_initialize_session
 
-def run_cli(loop):
+def run_cli(loop, scenarios):
     @click.group()
     def app():
         pass
 
-    @app.command()
-    @click.option("--region", '-r', default=None, help="The AWS Region")
-    def run(region):
-        session, err = try_initialize_session(region)
-        if err:
-            print(f"Error: {err}")
-            exit(1)
+    @app.command(name="run")
+    @click.argument("scenario",type=click.Choice(list(scenarios.keys())),)
+    def run_scenario(scenario: str):
+        """Runs a specified scenario"""
+        loop(scenario)
 
-        loop(session)
+    @app.command(name="list")
+    def list_scenarios():
+        """Lists all scenarios"""
+        for key, scenario in scenarios.items():
+            click.echo(f"Scenario {key}: {scenario["description"]}")
 
     return app
 
