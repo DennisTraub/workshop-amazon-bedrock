@@ -34,7 +34,7 @@ def invoke_claude(user_input: str):
         return None, e
 
 
-# Scenario 2 - Invoke Llama 3.1
+# Scenario 2 - Invoke Llama 3.1 without a chat template
 def invoke_llama(user_input: str):
     try:
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
@@ -60,7 +60,7 @@ def invoke_llama(user_input: str):
     except Exception as e:
         return None, e
 
-# Scenario 3 - Invoke Llama 3.1 with the correct chat template
+# Scenario 3 - Invoke Llama 3.1 with Llama's chat template
 def invoke_llama_with_chat_template(user_input: str):
     try:
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
