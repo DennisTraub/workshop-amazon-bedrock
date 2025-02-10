@@ -3,8 +3,8 @@ import textwrap
 
 from pathlib import Path
 
-from config import scenarios
-from utils import exit_on_error, get_user_input, run_cli
+from app import scenarios
+from app.utils import exit_on_error, get_user_input, run_cli
 
 
 def loop(scenario_id: str):
