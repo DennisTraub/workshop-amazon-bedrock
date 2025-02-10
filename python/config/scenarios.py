@@ -6,7 +6,12 @@ from module_1_basic_invocation import (
     invoke_claude,
     invoke_llama,
     invoke_llama_with_chat_template,
-    converse
+    invoke_with_the_converse_api
+)
+
+from module_2_context_and_memory import (
+    invoke_with_system_prompt,
+    invoke_with_conversation_history
 )
 
 @dataclass
@@ -49,6 +54,7 @@ class Scenario:
     function: Callable
     args: List[str] = field(default_factory=list)
     description: str = ""
+    file_location: str = ""
 
 
 @dataclass
@@ -81,32 +87,63 @@ class Scenarios:
 
 
 scenarios = Scenarios([
-    Scenario("1", module_1, "Invoke Claude 3.5 Haiku", invoke_claude,
+    Scenario(
+        "1",
+        module_1,
+        "Invoke Claude 3.5 Haiku",
+        invoke_claude,
         description="Scenario 1: Send a message to Claude 3.5 Haiku using the InvokeModel API and Claude's native"
-                    "request/response payloads"
+                    "request/response payloads",
+        file_location="module_1_basic_invocation/invoke_model.py"
     ),
-    Scenario("2", module_1, "Invoke Llama 3.1 without Meta's chat template", invoke_llama,
-             description="Scenario 2: Send a message to Llama 3.1 using the InvokeModel API and Llama's native"
-                         "request/response payloads"
+    Scenario(
+        "2",
+        module_1,
+        "Invoke Llama 3.1 without Meta's chat template",
+        invoke_llama,
+        description="Scenario 2: Send a message to Llama 3.1 using InvokeModel without a chat template",
+        file_location="module_1_basic_invocation/invoke_model.py"
     ),
     Scenario(
         "3",
         module_1,
         "Invoke LLama 3.1 with Meta's chat template",
-        invoke_llama_with_chat_template
+        invoke_llama_with_chat_template,
+        description="Scenario 3: Send a message to Llama 3.1 with Llama's chat template",
+        file_location="module_1_basic_invocation/invoke_model.py"
     ),
     Scenario(
         "4",
         module_1,
-        "Invoke Claude 3.5 Haiku with the converse API",
-        converse,
-        ["anthropic.claude-3-haiku-20240307-v1:0"]
+        "Invoke LLama 3.1 with the converse API",
+        invoke_with_the_converse_api,
+        ["us.meta.llama3-1-8b-instruct-v1:0"],
+        description="Scenario 4: Send a message to Llama using the Bedrock Converse API",
+        file_location="module_1_basic_invocation/converse.py"
     ),
     Scenario(
         "5",
         module_1,
-        "Invoke LLama 3.1 with the converse API",
-        converse,
-        ["us.meta.llama3-1-8b-instruct-v1:0"]
+        "Invoke Claude 3.5 Haiku with the converse API",
+        invoke_with_the_converse_api,
+        ["anthropic.claude-3-haiku-20240307-v1:0"],
+        description="Scenario 5: Send a message to Claude using the Bedrock Converse API",
+        file_location="module_1_basic_invocation/converse.py"
+    ),
+    Scenario(
+        "6",
+        module_2,
+        "Provide additional context using a system prompt",
+        invoke_with_system_prompt,
+        description="Scenario 6: Provide additional context using a system prompt",
+        file_location="module_2_context_and_memory/system_prompt.py"
+    ),
+    Scenario(
+        "7",
+        module_2,
+        "Remember the conversation history",
+        invoke_with_conversation_history,
+        description="Scenario 7: Manage the conversation history to simulate an ongoing chat",
+        file_location="module_2_context_and_memory/conversation_history.py"
     )
 ])

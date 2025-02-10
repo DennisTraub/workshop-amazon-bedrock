@@ -1,14 +1,14 @@
 import boto3
 
-def converse(user_input, model_id):
+def invoke_with_the_converse_api(user_input, model_id):
+    client = boto3.client("bedrock-runtime", region_name="us-east-1")
+
+    conversation = [{
+        "role": "user",
+        "content": [{"text": user_input}],
+    }]
+
     try:
-        client = boto3.client("bedrock-runtime", region_name="us-east-1")
-
-        conversation = [{
-            "role": "user",
-            "content": [{"text": user_input}],
-        }]
-
         response = client.converse(
             modelId=model_id,
             messages=conversation,
@@ -17,7 +17,7 @@ def converse(user_input, model_id):
 
         response_text = response["output"]["message"]["content"][0]["text"]
 
-        return response_text, None
+        return {"response_text": response_text}
 
     except Exception as e:
-        return None, e
+        return {"error": e}

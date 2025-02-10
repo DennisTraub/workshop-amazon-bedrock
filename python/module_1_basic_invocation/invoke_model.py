@@ -28,10 +28,10 @@ def invoke_claude(user_input: str):
         response_payload = json.loads(response["body"].read())
         response_text = response_payload["content"][0]["text"]
 
-        return response_text, None
+        return {"response_text": response_text}
 
     except Exception as e:
-        return None, e
+        return {"error": e}
 
 
 # Scenario 2 - Invoke Llama 3.1 without a chat template
