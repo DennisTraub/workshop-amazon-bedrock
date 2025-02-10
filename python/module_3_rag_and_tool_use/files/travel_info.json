@@ -1,0 +1,296 @@
+{
+  "new_york": {
+    "events": [
+      {
+        "name": "Broadway Shows",
+        "type": "Theater",
+        "schedule": "Various, mostly Tuesday to Sunday"
+      },
+      {
+        "name": "Central Park Tours",
+        "type": "Outdoor Activity",
+        "schedule": "Daily"
+      },
+      {
+        "name": "New York Fashion Week",
+        "type": "Fashion Event",
+        "schedule": "September and February"
+      }
+    ],
+    "weather": {
+      "months": {
+        "january": {
+          "high_celsius": 4,
+          "high_fahrenheit": 39,
+          "low_celsius": -3,
+          "low_fahrenheit": 27,
+          "precipitation_mm": 86,
+          "precipitation_inches": 3.4,
+          "description": "Cold with snow and rain likely"
+        },
+        "february": {
+          "high_celsius": 6,
+          "high_fahrenheit": 43,
+          "low_celsius": -2,
+          "low_fahrenheit": 28,
+          "precipitation_mm": 78,
+          "precipitation_inches": 3.1,
+          "description": "Cold winter weather continues, mix of snow and rain"
+        },
+        "march": {
+          "high_celsius": 10,
+          "high_fahrenheit": 50,
+          "low_celsius": 2,
+          "low_fahrenheit": 36,
+          "precipitation_mm": 101,
+          "precipitation_inches": 4.0,
+          "description": "Milder temperatures, frequent rain showers"
+        },
+        "april": {
+          "high_celsius": 16,
+          "high_fahrenheit": 61,
+          "low_celsius": 7,
+          "low_fahrenheit": 45,
+          "precipitation_mm": 106,
+          "precipitation_inches": 4.2,
+          "description": "Spring weather with regular rainfall"
+        },
+        "may": {
+          "high_celsius": 22,
+          "high_fahrenheit": 72,
+          "low_celsius": 13,
+          "low_fahrenheit": 55,
+          "precipitation_mm": 111,
+          "precipitation_inches": 4.4,
+          "description": "Warm spring temperatures, occasional thunderstorms"
+        },
+        "june": {
+          "high_celsius": 27,
+          "high_fahrenheit": 81,
+          "low_celsius": 18,
+          "low_fahrenheit": 64,
+          "precipitation_mm": 104,
+          "precipitation_inches": 4.1,
+          "description": "Warm and humid, afternoon thunderstorms possible"
+        },
+        "july": {
+          "high_celsius": 29,
+          "high_fahrenheit": 84,
+          "low_celsius": 21,
+          "low_fahrenheit": 70,
+          "precipitation_mm": 116,
+          "precipitation_inches": 4.6,
+          "description": "Hot and humid, frequent thunderstorms"
+        },
+        "august": {
+          "high_celsius": 28,
+          "high_fahrenheit": 82,
+          "low_celsius": 20,
+          "low_fahrenheit": 68,
+          "precipitation_mm": 111,
+          "precipitation_inches": 4.4,
+          "description": "Hot and humid, thunderstorms common"
+        },
+        "september": {
+          "high_celsius": 24,
+          "high_fahrenheit": 75,
+          "low_celsius": 16,
+          "low_fahrenheit": 61,
+          "precipitation_mm": 109,
+          "precipitation_inches": 4.3,
+          "description": "Warm early fall weather, occasional rain"
+        },
+        "october": {
+          "high_celsius": 18,
+          "high_fahrenheit": 64,
+          "low_celsius": 10,
+          "low_fahrenheit": 50,
+          "precipitation_mm": 96,
+          "precipitation_inches": 3.8,
+          "description": "Mild fall temperatures, moderate rainfall"
+        },
+        "november": {
+          "high_celsius": 12,
+          "high_fahrenheit": 54,
+          "low_celsius": 5,
+          "low_fahrenheit": 41,
+          "precipitation_mm": 91,
+          "precipitation_inches": 3.6,
+          "description": "Cooling temperatures, mix of rain and occasional snow"
+        },
+        "december": {
+          "high_celsius": 6,
+          "high_fahrenheit": 43,
+          "low_celsius": 0,
+          "low_fahrenheit": 32,
+          "precipitation_mm": 94,
+          "precipitation_inches": 3.7,
+          "description": "Cold with mix of rain and snow"
+        }
+      },
+      "summary": {
+        "hottest_month": "july",
+        "coldest_month": "january",
+        "wettest_month": "july",
+        "driest_month": "february",
+        "annual_rainfall_mm": 1203,
+        "annual_rainfall_inches": 47.6,
+        "climate_type": "Humid subtropical (Cfa)",
+        "description": "New York City has a humid subtropical climate with hot summers and cold winters. Precipitation is evenly distributed throughout the year with both rain and snow. The city experiences all four seasons distinctly, with significant temperature variations between seasons."
+      }
+    },
+    "attractions": [
+      "Statue of Liberty",
+      "Empire State Building",
+      "Metropolitan Museum of Art",
+      "Times Square"
+    ]
+  },
+  "barcelona": {
+    "events": [
+      {
+        "name": "La Mercè Festival",
+        "type": "Cultural Festival",
+        "schedule": "September"
+      },
+      {
+        "name": "Primavera Sound",
+        "type": "Music Festival",
+        "schedule": "Late May/Early June"
+      },
+      {
+        "name": "Sagrada Familia Tours",
+        "type": "Cultural Activity",
+        "schedule": "Daily"
+      }
+    ],
+    "weather": {
+      "months": {
+        "january": {
+          "high_celsius": 14,
+          "high_fahrenheit": 57,
+          "low_celsius": 5,
+          "low_fahrenheit": 41,
+          "precipitation_mm": 41,
+          "precipitation_inches": 1.6,
+          "description": "Mild winter temperatures, occasional rain"
+        },
+        "february": {
+          "high_celsius": 15,
+          "high_fahrenheit": 59,
+          "low_celsius": 6,
+          "low_fahrenheit": 43,
+          "precipitation_mm": 29,
+          "precipitation_inches": 1.1,
+          "description": "Mild days, cool nights, lower rainfall"
+        },
+        "march": {
+          "high_celsius": 17,
+          "high_fahrenheit": 63,
+          "low_celsius": 8,
+          "low_fahrenheit": 46,
+          "precipitation_mm": 40,
+          "precipitation_inches": 1.6,
+          "description": "Spring begins, moderate temperatures"
+        },
+        "april": {
+          "high_celsius": 19,
+          "high_fahrenheit": 66,
+          "low_celsius": 10,
+          "low_fahrenheit": 50,
+          "precipitation_mm": 48,
+          "precipitation_inches": 1.9,
+          "description": "Pleasant spring weather, occasional showers"
+        },
+        "may": {
+          "high_celsius": 22,
+          "high_fahrenheit": 72,
+          "low_celsius": 13,
+          "low_fahrenheit": 55,
+          "precipitation_mm": 47,
+          "precipitation_inches": 1.9,
+          "description": "Warm days, comfortable evenings"
+        },
+        "june": {
+          "high_celsius": 26,
+          "high_fahrenheit": 79,
+          "low_celsius": 17,
+          "low_fahrenheit": 63,
+          "precipitation_mm": 29,
+          "precipitation_inches": 1.1,
+          "description": "Warm and sunny, low rainfall"
+        },
+        "july": {
+          "high_celsius": 29,
+          "high_fahrenheit": 84,
+          "low_celsius": 20,
+          "low_fahrenheit": 68,
+          "precipitation_mm": 22,
+          "precipitation_inches": 0.9,
+          "description": "Hot and dry, perfect beach weather"
+        },
+        "august": {
+          "high_celsius": 29,
+          "high_fahrenheit": 84,
+          "low_celsius": 20,
+          "low_fahrenheit": 68,
+          "precipitation_mm": 62,
+          "precipitation_inches": 2.4,
+          "description": "Hot with occasional thunderstorms"
+        },
+        "september": {
+          "high_celsius": 26,
+          "high_fahrenheit": 79,
+          "low_celsius": 17,
+          "low_fahrenheit": 63,
+          "precipitation_mm": 81,
+          "precipitation_inches": 3.2,
+          "description": "Warm, highest rainfall of the year"
+        },
+        "october": {
+          "high_celsius": 22,
+          "high_fahrenheit": 72,
+          "low_celsius": 14,
+          "low_fahrenheit": 57,
+          "precipitation_mm": 91,
+          "precipitation_inches": 3.6,
+          "description": "Mild temperatures, frequent rainfall"
+        },
+        "november": {
+          "high_celsius": 17,
+          "high_fahrenheit": 63,
+          "low_celsius": 9,
+          "low_fahrenheit": 48,
+          "precipitation_mm": 58,
+          "precipitation_inches": 2.3,
+          "description": "Cooling temperatures, moderate rainfall"
+        },
+        "december": {
+          "high_celsius": 14,
+          "high_fahrenheit": 57,
+          "low_celsius": 6,
+          "low_fahrenheit": 43,
+          "precipitation_mm": 40,
+          "precipitation_inches": 1.6,
+          "description": "Mild winter weather, occasional rain"
+        }
+      },
+      "summary": {
+        "hottest_month": "july",
+        "coldest_month": "january",
+        "wettest_month": "october",
+        "driest_month": "july",
+        "annual_rainfall_mm": 588,
+        "annual_rainfall_inches": 23.2,
+        "climate_type": "Mediterranean (Csa)",
+        "description": "Barcelona has a Mediterranean climate with mild winters and warm summers. Rainfall is moderate and most common in autumn. The city enjoys around 2,500 hours of sunshine annually, with hot but not extreme summers and mild winters."
+      }
+    },
+    "attractions": [
+      "Sagrada Familia",
+      "Park Güell",
+      "Casa Batlló",
+      "La Rambla"
+    ]
+  }
+}

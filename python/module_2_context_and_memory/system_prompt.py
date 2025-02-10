@@ -7,7 +7,9 @@ def invoke_with_system_prompt(user_input):
 
         model_id = "anthropic.claude-3-haiku-20240307-v1:0"
 
+        # Format today's date, e.g. February 10, 2024
         today = date.today().strftime("%B %d, %Y")
+
         system = [{
             "text": f"Today's date is {today}. "
                     f"Your are a friendly travel assistant. "

@@ -2,21 +2,21 @@ import boto3
 from datetime import date
 
 def invoke_with_conversation_history(user_input, conversation=None):
-
-    today = date.today().strftime("%B %d, %Y")
-    system = [{
-        "text": f"Today's date is {today}. "
-                f"Your are a friendly travel assistant. "
-                f"Keep your responses short, with a maximum of three sentences."
-    }]
-
-    if conversation is None:
-        conversation = []
-
     try:
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
-
         model_id = "anthropic.claude-3-haiku-20240307-v1:0"
+
+        # Format today's date, e.g. February 10, 2024
+        today = date.today().strftime("%B %d, %Y")
+
+        system = [{
+            "text": f"Today's date is {today}. "
+                    f"Your are a friendly travel assistant. "
+                    f"Keep your responses short, with a maximum of three sentences."
+        }]
+
+        if conversation is None:
+            conversation = []
 
         conversation.append({
             "role": "user",
