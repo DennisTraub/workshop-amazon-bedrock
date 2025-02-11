@@ -1,17 +1,8 @@
-from _app.types import Module, Scenarios, Scenario
+from app.types import Module, Scenarios, Scenario
 
-from module_1 import (
-    invoke_claude,
-    invoke_llama,
-    invoke_llama_with_chat_template,
-)
-from module_2 import (
-    converse_api_with_claude,
-    converse_api_with_llama,
-    system_prompt,
-    conversation_history
-)
-from module_3 import simple_rag, vector_rag
+from module_1 import invoke_claude, invoke_llama, invoke_llama_with_chat_template
+from module_2 import converse_api_with_claude, converse_api_with_llama, system_prompt, conversation_history
+from module_3 import simple_rag, vector_rag, tool_use
 
 module_1 = Module("1", "Basic model invocation with native payloads")
 module_2 = Module("2", "The Converse API, system prompts, and conversation history")
@@ -27,5 +18,6 @@ scenarios = Scenarios([
     Scenario("6", module_2, "Provide additional context through a system prompt", system_prompt),
     Scenario("7", module_2, "Remember the conversation history across invocations", conversation_history),
     Scenario("8", module_3, "Basic RAG: Load additional data into the context", simple_rag),
-    Scenario("9", module_3, "Vector RAG: Retrieve relevant data from a vector database", vector_rag)
+    Scenario("9", module_3, "Vector RAG: Retrieve relevant data from a vector database", vector_rag),
+    Scenario("10", module_3, "Tool use (a.k.a. function calling)", tool_use)
 ])

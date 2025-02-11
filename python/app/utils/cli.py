@@ -1,7 +1,7 @@
 import click
 import os
 
-from _app.utils.vector_db import initialize_vector_db
+from app.utils.vector_db import initialize_vector_db
 
 
 def run_cli(loop, scenarios):
@@ -9,9 +9,8 @@ def run_cli(loop, scenarios):
     def app():
         # Check if the vector_db exists, if not initialize it
         if not os.path.exists("./data/vector_db"):
-            click.echo("Initializing vector database for module 3...")
+            click.echo("Initializing vector database...")
             initialize_vector_db()
-            click.echo("Done.")
 
     @app.command(name="run")
     @click.argument("scenario", required=False, type=click.Choice(list(scenarios.keys())))

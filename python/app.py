@@ -1,5 +1,5 @@
-from _app.scenario_config import scenarios
-from _app.utils import loop, run_cli
+from app.scenario_config import scenarios
+from app.utils import loop, run_cli
 
 
 if __name__ == '__main__':

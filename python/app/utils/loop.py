@@ -1,7 +1,7 @@
 import click
 import textwrap
 
-from _app.utils import exit_on_error, get_user_input
+from app.utils import exit_on_error, get_user_input
 
 def loop(scenario_id, scenarios):
     is_first_message = True
