@@ -6,13 +6,17 @@ from . import Module
 
 @dataclass
 class Scenario:
-    key: str
+    id: str
     module: Module
     title: str
     function: Callable
     args: List[str] = field(default_factory=list)
-    description: str = ""
-    file_location: str = ""
+
+    def __str__(self):
+        return (
+            f"{self.module}\n"
+            f"Scenario {self.id}: {self.title}"
+        )
 
 
 @dataclass
@@ -29,16 +33,16 @@ class Scenarios:
             if scenario.module != current_module:
                 current_module = scenario.module
                 result += f"\n{current_module}\n"
-                result += ("=" * 52) + "\n"
-            result += f"{scenario.key} - {scenario.title}\n"
+                result += ("=" * 68) + "\n"
+            result += f"{scenario.id} - {scenario.title}\n"
 
         return result
 
     def keys(self):
-        return [s.key for s in self._scenarios]
+        return [s.id for s in self._scenarios]
 
     def get(self, key: str):
-        return next((s for s in self._scenarios if s.key == key), None)
+        return next((s for s in self._scenarios if s.id == key), None)
 
     def format_available_scenario_numbers(self, delimiter="|"):
         return delimiter.join(list(self.keys()))

@@ -1,25 +1,20 @@
 import boto3
 import json
-import os
+
 from datetime import date
 
+from _app.utils import load_file
 
-def load_context(file_name):
-    script_path = os.path.abspath(__file__)
-    file_path = os.path.join(os.path.dirname(script_path), file_name)
-
-    with open(file_path, 'r') as file:
-        return json.load(file)
 
 # Scenario 8 - Basic RAG: Load external data into the context
-def basic_rag(user_input, conversation=None):
+def simple_rag(user_input, conversation=None):
     try:
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
 
         model_id = "anthropic.claude-3-haiku-20240307-v1:0"
 
-        # Format today's date, e.g. February 10, 2024
-        today = date.today().strftime("%B %d, %Y")
+        # Format today's date, e.g. "Tuesday 03 December 2024"
+        today = date.today().strftime("%A %d %B %Y")
 
         system = [{
             "text": f"Today's date is {today}. You are a travel assistant."
@@ -32,10 +27,16 @@ def basic_rag(user_input, conversation=None):
         if conversation is None:
             conversation = []
 
-        data = json.dumps(load_context("files/travel_info.json"))
+        data = json.dumps(load_file("./data/files/travel_info.json"))
 
-        augmented_prompt = f"<data>{data}</data>\n"\
-                           f"<question>{user_input}</question>"
+        augmented_prompt = (
+            f"<data>"
+            f"{data}"
+            f"</data>"
+            f"<question>"
+            f"{user_input}"
+            f"</question>"
+        )
 
         conversation.append({
             "role": "user",

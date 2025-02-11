@@ -1,13 +1,13 @@
 import boto3
 from datetime import date
 
-def invoke_with_conversation_history(user_input, conversation=None):
+def conversation_history(user_input, conversation=None):
     try:
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
         model_id = "anthropic.claude-3-haiku-20240307-v1:0"
 
-        # Format today's date, e.g. February 10, 2024
-        today = date.today().strftime("%B %d, %Y")
+        # Format today's date, e.g. "Tuesday 03 December 2024"
+        today = date.today().strftime("%A %d %B %Y")
 
         system = [{
             "text": f"Today's date is {today}. "

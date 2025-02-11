@@ -1,7 +1,10 @@
 import boto3
 
-def invoke_with_the_converse_api(user_input, model_id):
+
+def converse_api_with_claude(user_input):
     client = boto3.client("bedrock-runtime", region_name="us-east-1")
+
+    model_id = "anthropic.claude-3-haiku-20240307-v1:0"
 
     conversation = [{
         "role": "user",

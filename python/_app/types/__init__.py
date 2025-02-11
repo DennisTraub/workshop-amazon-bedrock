@@ -1,4 +1,4 @@
-from .modules import Modules, Module
+from .modules import Module
 from .scenarios import Scenarios, Scenario
 
-__all__ = ["Modules", "Module", "Scenarios", "Scenario", "scenarios"]
+__all__ = ["Module", "Scenarios", "Scenario", "scenarios"]
