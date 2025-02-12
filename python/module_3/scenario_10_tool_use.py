@@ -24,7 +24,7 @@ def get_weather_tool_spec():
                     },
                     "required": ["city"],
                 }
-            },
+            }
         }
     }
 
@@ -90,19 +90,18 @@ def process_response(follow_up_response, client, depth=0, max_depth=3, **params)
 
             return process_response(follow_up_response, client, depth + 1, max_depth, **params)
 
-
 def tool_use(user_input, conversation=None):
     try:
         # Initialize the Bedrock Runtime client
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
 
-        # Specify the foundation model ID
+        # Specify the foundation model to use
         model_id = "anthropic.claude-3-haiku-20240307-v1:0"
 
         # Get today's date for context, e.g. "Tuesday 03 December 2024"
         today = date.today().strftime("%A %d %B %Y")
 
-        # Define system prompt with strict rules about tool usage
+        # Define a system prompt with strict rules about tool usage
         system = [{
             "text": f"Today's date is {today}. You are a travel assistant."
                     f"Your are a friendly travel assistant. "

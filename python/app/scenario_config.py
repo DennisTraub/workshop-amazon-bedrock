@@ -4,6 +4,7 @@ from module_1 import invoke_claude, invoke_llama, invoke_llama_with_chat_templat
 from module_2 import converse_api_with_claude, converse_api_with_llama, system_prompt, conversation_history
 from module_3 import simple_rag, vector_rag, tool_use
 
+
 module_1 = Module("1", "Basic model invocation with native payloads")
 module_2 = Module("2", "The Converse API, system prompts, and conversation history")
 module_3 = Module("3", "Retrieval-augmented generation (RAG) and tool-use")
