@@ -22,7 +22,8 @@ def loop(scenario_id, scenarios):
             exit_on_error(response["error"])
 
         response_lines = textwrap.wrap(response["response_text"].strip(), width=120)
-        click.echo(f"{"\n".join(response_lines)}\n")
+        lines = "\n".join(response_lines)
+        click.echo(f"{lines}\n")
 
         if "conversation" in response and is_first_message:
             extra_args = (*extra_args, response["conversation"])
