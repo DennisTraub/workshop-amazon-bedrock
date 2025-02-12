@@ -83,7 +83,7 @@ def retrieve_from_vector_db(query):
     )
 
     # Query the collection
-    results = collection.query(query_texts=[query], n_results=5)
+    results = collection.query(query_texts=[query], n_results=3)
 
     # Combine the retrieved chunks into a single context
     if results and "documents" in results and len(results["documents"]) > 0:
