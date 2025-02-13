@@ -1,0 +1,10 @@
+[project]
+name = "bedrock-workshop"
+version = "0.0.1"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3==1.36.18",
+    "chromadb==0.6.3",
+    "click==8.1.8",
+    "prompt-toolkit==3.0.50",
+]

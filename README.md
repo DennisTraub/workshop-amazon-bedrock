@@ -1,4 +1,4 @@
-# Installation Instructions
+# Installation Instructions (Traditional)
 
 ## Prerequisites
 - Python 3.12 or higher
@@ -44,3 +44,9 @@ cd python
   # python app.py run [SCENARIO_NUMBER], e.g.:
   python app.py run 1
 ```
+
+# Installation Instructions (uv)
+
+1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. `uv sync`
+1. Run like: `uv run app.py list`
