@@ -2,7 +2,7 @@ import boto3
 import json
 
 
-# Scenario 1 - Basic invocation of Claude 3.5 Haiku
+# Scenario 3 - Basic invocation of Claude 3 Haiku
 def invoke_claude(user_input: str):
     try:
         # Initialize the Bedrock Runtime client

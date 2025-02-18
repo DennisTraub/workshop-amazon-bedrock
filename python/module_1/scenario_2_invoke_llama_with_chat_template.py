@@ -2,7 +2,7 @@ import boto3
 import json
 
 
-# Scenario 3 - Invoke Llama 3.1 with Llama's chat template
+# Scenario 2 - Invoke Llama 3.1 with Llama's chat template
 def invoke_llama_with_chat_template(user_input: str):
     try:
         # Initialize the Bedrock Runtime client
