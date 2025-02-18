@@ -13,7 +13,9 @@ def converse_api_with_llama(user_input):
         # Format the conversation using the messages structure
         # Note: There's no difference to the previous example with Claude,
         # the Converse API provides a unified interface across different models
-        conversation = [{"role": "user", "content": [{"text": user_input}]}]
+        conversation = [
+            {"role": "user", "content": [{"text": user_input}]}
+        ]
 
         # Make the API call to generate a response
         # Note: The same API structure works for Claude, Llama, and any other supported model

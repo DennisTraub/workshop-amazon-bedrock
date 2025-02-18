@@ -1,18 +1,20 @@
 import boto3
 
 
-# Scenario 4: Invoke Claude with the Converse API
-def converse_api_with_claude(user_input):
+# Scenario 4: Invoke Amazon Nova with the Converse API
+def converse_api_with_nova(user_input):
     try:
         # Initialize the Bedrock Runtime client
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
 
         # Specify the foundation model ID
-        model_id = "anthropic.claude-3-haiku-20240307-v1:0"
+        model_id = "amazon.nova-lite-v1:0"
 
         # Format the conversation using the messages structure
         # The Converse API expects an array of messages with role and content
-        conversation = [{"role": "user", "content": [{"text": user_input}]}]
+        conversation = [
+            {"role": "user", "content": [{"text": user_input}]}
+        ]
 
         # Make the API call to generate a response
         # Note: converse() is a higher-level API compared to invoke_model()

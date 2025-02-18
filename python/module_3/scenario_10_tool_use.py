@@ -101,7 +101,7 @@ def tool_use(user_input, conversation=None):
         client = boto3.client("bedrock-runtime", region_name="us-east-1")
 
         # Specify the foundation model to use
-        model_id = "anthropic.claude-3-haiku-20240307-v1:0"
+        model_id = "amazon.nova-lite-v1:0"
 
         # Get today's date for context, e.g. "Tuesday 03 December 2024"
         today = date.today().strftime("%A %d %B %Y")
@@ -125,7 +125,9 @@ def tool_use(user_input, conversation=None):
             conversation = []
 
         # Add the new user message to the conversation
-        conversation.append({"role": "user", "content": [{"text": user_input}]})
+        conversation.append(
+            {"role": "user", "content": [{"text": user_input}]}
+        )
 
         # Configure the list of available tools
         tool_config = {"tools": [get_weather_tool_spec()]}
