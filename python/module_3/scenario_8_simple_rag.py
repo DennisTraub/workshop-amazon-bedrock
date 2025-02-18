@@ -3,6 +3,7 @@ import json
 
 from datetime import date
 
+from app.config import travel_info_file
 from app.utils import load_file
 
 
@@ -27,8 +28,8 @@ def simple_rag(user_input, conversation=None):
                     f"Based on that information, answer the user's question, which is embedded in <question> tags."
         }]
 
-        # Load the external travel information into JSON
-        data = json.dumps(load_file("./data/files/travel_info.json"))
+        # Get the travel information from a local file
+        data = json.dumps(load_file(travel_info_file))
 
         # Create an augmented prompt that combines the external data and user question
         # This format helps the model distinguish between context and query

@@ -1,4 +1,4 @@
-from app.scenario_config import scenarios
+from app.config import scenarios
 from app.utils import loop, run_cli
 
 

@@ -3,42 +3,10 @@ import click
 
 from datetime import date
 
+from .scenario_10_tools import call_weather_api, get_weather_api_spec
+
+
 # Scenario 10: Tool use (also known as function calling)
-def get_weather_tool_spec():
-    """
-    Defines the tool specification using the API Schema format
-    This tells the model what parameters the tool expects and how to use it
-    """
-    return {
-        "toolSpec": {
-            "name": "get_weather",
-            "description": "Get the current weather for a city",
-            "inputSchema": {
-                "json": {
-                    "type": "object",
-                    "properties": {
-                        "city": {
-                            "type": "string",
-                            "description": "The city to get weather for",
-                        }
-                    },
-                    "required": ["city"],
-                }
-            }
-        }
-    }
-
-def weather_tool(city):
-    """
-    Simulates a weather API with hardcoded responses
-    In a real application, this would call an actual weather service API
-    """
-    weather_data = {
-        "barcelona": {"temperature": "12°C/54°F", "condition": "Partly cloudy"},
-        "new_york": {"temperature": "-2°C/28°F", "condition": "Clear skies"},
-    }
-    return weather_data.get(city.lower().replace(" ", "_"))
-
 def process_response(follow_up_response, client, depth=0, max_depth=3, **params):
     """
     Recursively processes model responses that may contain tool use requests
@@ -71,7 +39,7 @@ def process_response(follow_up_response, client, depth=0, max_depth=3, **params)
                 # Execute the weather tool
                 tool_use_id = tool_use_request["toolUseId"]
                 city = tool_use_request["input"]["city"]
-                weather_info = weather_tool(city)
+                weather_info = call_weather_api(city)
 
                 tool_results.append({
                     "toolResult": {
@@ -130,7 +98,7 @@ def tool_use(user_input, conversation=None):
         )
 
         # Configure the list of available tools
-        tool_config = {"tools": [get_weather_tool_spec()]}
+        tool_config = {"tools": [get_weather_api_spec()]}
 
         # Prepare the parameters for the API call
         params = {
