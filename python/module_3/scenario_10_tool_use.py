@@ -53,6 +53,8 @@ def process_response(follow_up_response, client, depth=0, max_depth=3, **params)
     conversation = params["messages"]
     conversation.append(follow_up_response["output"]["message"])
 
+    tool_results = []
+
     # Process each content block in the response
     content_blocks = follow_up_response["output"]["message"]["content"]
     for content_block in content_blocks:
@@ -71,24 +73,27 @@ def process_response(follow_up_response, client, depth=0, max_depth=3, **params)
                 city = tool_use_request["input"]["city"]
                 weather_info = weather_tool(city)
 
-                # Add the tool's response to conversation
-                conversation.append({
-                    "role": "user",
-                    "content": [{
-                        "toolResult": {
-                            "toolUseId": tool_use_id,
-                            "content": [{"json": weather_info}],
-                        }
-                    }]
+                tool_results.append({
+                    "toolResult": {
+                        "toolUseId": tool_use_id,
+                        "content": [{"json": weather_info}],
+                    }
                 })
 
                 # Update the conversation in the request parameters
                 params["messages"] = conversation
 
-                # Send the tool results to the model
-                follow_up_response = client.converse(**params)
+    if len(tool_results) > 0:
+        # Add the tool's response(s) to conversation
+        conversation.append({
+            "role": "user",
+            "content": tool_results
+        })
 
-            return process_response(follow_up_response, client, depth + 1, max_depth, **params)
+        # Send the tool results to the model
+        follow_up_response = client.converse(**params)
+
+        return process_response(follow_up_response, client, depth + 1, max_depth, **params)
 
 def tool_use(user_input, conversation=None):
     try:
