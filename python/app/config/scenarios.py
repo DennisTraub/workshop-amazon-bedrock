@@ -14,7 +14,7 @@ scenarios = Scenarios([
     Scenario("1", module_1, "Invoke Llama 3.1 without a chat template", invoke_llama),
     Scenario("2", module_1, "Invoke LLama 3.1 with Meta's chat template", invoke_llama_with_chat_template),
     Scenario("3", module_1, "Invoke Amazon Nova", invoke_nova),
-    Scenario("4", module_2, "Invoke Claude 3 Haiku with the Converse API", converse_api_with_nova),
+    Scenario("4", module_2, "Invoke Amazon Nova with the Converse API", converse_api_with_nova),
     Scenario("5", module_2, "Invoke LLama 3.1 with the Converse API", converse_api_with_llama),
     Scenario("6", module_2, "Provide additional context through a system prompt", system_prompt),
     Scenario("7", module_2, "Remember the conversation history across invocations", conversation_history),
