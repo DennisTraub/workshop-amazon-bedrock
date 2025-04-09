@@ -88,7 +88,30 @@ def loop(scenario_id, scenarios):
     while True:
         user_input = get_user_input().strip()
         if user_input == "/x":
-            break
+            click.echo("\nWould you like to repeat this scenario? (y/n)")
+            repeat = get_user_input().strip().lower()
+            if repeat == 'y':
+                click.echo("\nRepeating scenario...")
+                click.echo(f"\n{scenario}")
+                click.echo("=" * 68)
+                if explanation:
+                    console.print(Markdown(explanation))
+                    click.echo("\nPress Enter to continue to the code editor...")
+                    input()
+                if source_code:
+                    click.echo("\nOpening code editor...")
+                    edited_code = edit_code(source_code)
+                    if edited_code != source_code:
+                        click.echo("\nRunning edited code...")
+                        def execute_edited(user_input, *args):
+                            return scenario.execute_edited_code(edited_code, user_input, *args)
+                        func = execute_edited
+                    else:
+                        click.echo("\nRunning original code...")
+                        click.echo()
+                continue
+            else:
+                break
         response = func(user_input, *extra_args)
         if "error" in response:
             exit_on_error(response["error"])
