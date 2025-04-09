@@ -1,4 +1,6 @@
 from prompt_toolkit.styles import Style
+from prompt_toolkit.styles import style_from_pygments_cls
+from pygments.styles import get_style_by_name
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.lexers import PygmentsLexer
 from pygments.lexers import PythonLexer
@@ -16,30 +18,6 @@ import click
 
 # Create a rich console for rendering markdown
 console = Console()
-
-def get_editor_style():
-    """Get the dark mode color scheme for the editor."""
-    # VS Code dark theme colors
-    bg_color = '#1e1e1e'
-    
-    return Style.from_dict({
-        # Set background color for everything
-        'text-area': f'bg:{bg_color}',
-        'text-area.cursor-line': f'bg:{bg_color}',
-        'prompt': f'bg:{bg_color}',
-        'pygments.keyword': f'#569cd6 bg:{bg_color}',  # soft blue for keywords
-        'pygments.string': f'#ce9178 bg:{bg_color}',  # soft orange for strings
-        'pygments.comment': f'#6a9955 bg:{bg_color}',  # soft green for comments
-        'pygments.number': f'#b5cea8 bg:{bg_color}',  # sage green for numbers
-        'pygments.function': f'#dcdcaa bg:{bg_color}',  # soft yellow for functions
-        'pygments.class': f'#4ec9b0 bg:{bg_color}',  # turquoise for classes
-        'pygments.name.builtin': f'#4ec9b0 bg:{bg_color}',  # turquoise for built-ins
-        'pygments.name.function': f'#dcdcaa bg:{bg_color}',  # soft yellow for function names
-        'pygments.name.class': f'#4ec9b0 bg:{bg_color}',  # turquoise for class names
-        'pygments.name': f'#d4d4d4 bg:{bg_color}',  # light gray for other names
-        'pygments.operator': f'#d4d4d4 bg:{bg_color}',  # light gray for operators
-        'pygments.punctuation': f'#d4d4d4 bg:{bg_color}',  # light gray for punctuation
-    })
 
 def check_terminal_capabilities():
     """Check if the terminal supports the required features for the editor."""
@@ -118,12 +96,22 @@ Press Enter to continue to the editor...
         text_area,
     ]))
 
+    # Create a base style
+    base_style = style_from_pygments_cls(get_style_by_name('monokai'))
+    
+    # Customize the style with background color
+    style = Style([
+        ('', 'bg:#1e1e1e'),  # Dark background color
+        *base_style.style_rules  # Merge with existing style rules
+    ])
+    
     # Create and run the application
     app = Application(
         layout=layout,
         key_bindings=kb,
         full_screen=True,
-        style=get_editor_style(),
+        style=style,
+        include_default_pygments_style=False,
         mouse_support=True,
     )
 
