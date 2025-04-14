@@ -35,7 +35,7 @@ def invoke_nova(user_input: str):
         )
 
         # Extract and return the generated text from the response
-        response_payload = json.loads(response["body"].read())
+        response_payload = json.loads(response["body"])
         response_text = response_payload["output"]["message"]["content"][0]["text"]
 
         return {"response_text": response_text}

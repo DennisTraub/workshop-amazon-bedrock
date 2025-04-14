@@ -1,4 +1,6 @@
-boto3==1.36.18
+boto3==1.37.25
 chromadb==0.6.3
 click==8.1.8
 prompt_toolkit==3.0.50
+pygments==2.17.2
+rich==13.7.0
