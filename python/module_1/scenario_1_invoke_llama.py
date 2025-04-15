@@ -27,7 +27,7 @@ def invoke_llama(user_input: str):
 
         # Extract and return the generated text from the response
         # Note: Llama has a different response format compared to Claude
-        response_payload = json.loads(response["body"])
+        response_payload = json.loads(response["body"].read())
         response_text = response_payload["generation"]
 
         return {"response_text": response_text}
