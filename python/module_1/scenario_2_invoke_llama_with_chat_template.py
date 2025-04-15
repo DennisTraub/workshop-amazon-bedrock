@@ -32,7 +32,7 @@ def invoke_llama_with_chat_template(user_input: str):
         )
 
         # Extract and return the generated text from the response
-        response_payload = json.loads(response["body"])
+        response_payload = json.loads(response["body"].read())
         response_text = response_payload["generation"]
 
         return {"response_text": response_text}
